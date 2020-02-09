@@ -98,7 +98,7 @@ class OperacionEmpresa extends StatelessWidget {
                   'Recursos $activo',
                   style: TextStyle(
                     color: Colors.orange.shade800,
-                    fontSize: 24,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 0.5,
                   ),
@@ -115,7 +115,7 @@ class OperacionEmpresa extends StatelessWidget {
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                padding: EdgeInsets.only(top: 15),
                 children: _itemImage
                     .map(
                       (item) => MaterialButton(

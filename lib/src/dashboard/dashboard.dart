@@ -135,8 +135,8 @@ class MyDashboard extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Empresa()));
-                           tag = empresa['taglogo'];
-                           logo = empresa['logo'];
+                      tag = empresa['taglogo'];
+                      logo = empresa['logo'];
                     },
                     child: Container(
                       width: 180,
@@ -147,24 +147,27 @@ class MyDashboard extends StatelessWidget {
                         elevation: 8,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Hero(
                               tag: empresa['taglogo'],
                               child: Image.asset(
                                 empresa['logo'],
-                                height: 110,
+                                height: 120,
                                 width: 140,
                                 fit: BoxFit.contain,
                               ),
                             ),
-                            Center(
-                              child: Text(
-                                empresa['subtitle'],
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 0.6,
-                                    color: Colors.blueGrey),
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                  empresa['subtitle'],
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0.6,
+                                      color: Colors.blueGrey),
+                                ),
                               ),
                             ),
                           ],

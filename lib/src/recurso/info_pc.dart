@@ -38,9 +38,9 @@ class InfoPC extends StatelessWidget {
             cabRecurso.toUpperCase(),
             style: TextStyle(
                 color: Colors.blueGrey,
-                fontSize: 23.5,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 0.9),
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5),
           ),
           actions: <Widget>[
             Padding(
@@ -91,9 +91,6 @@ class InfoPC extends StatelessWidget {
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: DataTable(columns: [
-                DataColumn(label: null)
-              ], rows: [])
             ),
           ],
         ),

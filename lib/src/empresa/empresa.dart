@@ -6,7 +6,8 @@ import '../dashboard/dashboard.dart';
 String activo;
 String dropdownValue = 'Por Nombre';
 IconData dropdownValueIcon = Icons.view_stream;
-String valorVista='';
+String valorVista = '';
+
 class Empresa extends StatefulWidget {
   @override
   _EmpresaState createState() => _EmpresaState();
@@ -92,7 +93,6 @@ class _EmpresaState extends State<Empresa> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
@@ -118,9 +118,10 @@ class _EmpresaState extends State<Empresa> {
             ),
             _rowTextOrder(context),
             Container(
-              child:
-              Expanded(
-              child: valorVista.contains('BD') == true ? _listContenidoCuadricular() : _listContenido()),
+              child: Expanded(
+                  child: valorVista.contains('BD') == true
+                      ? _listContenidoCuadricular()
+                      : _listContenido()),
             ),
           ],
         ),
@@ -155,9 +156,9 @@ class _EmpresaState extends State<Empresa> {
             },
             decoration: InputDecoration(
               hintStyle: TextStyle(
-                fontSize: 17,
+                fontSize: 15,
                 color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w400,
                 letterSpacing: 0.8,
               ),
               hintText: 'Busca los equipos',
@@ -196,7 +197,7 @@ class _EmpresaState extends State<Empresa> {
                   color: index == selectedIndex
                       ? Colors.orange.shade800
                       : Colors.orange.shade300,
-                  fontSize: index == selectedIndex ? 20 : 18,
+                  fontSize: index == selectedIndex ? 18 : 16,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.9,
                 ),
@@ -231,7 +232,7 @@ class _EmpresaState extends State<Empresa> {
                     Icons.add_circle_outline,
                     color: Colors.blueGrey,
                   ),
-                  iconSize: 32,
+                  iconSize: 26,
                 ),
               )
             ],
@@ -250,7 +251,7 @@ class _EmpresaState extends State<Empresa> {
         iconSize: 26,
         elevation: 16,
         style: TextStyle(
-            fontSize: 16, color: Colors.blueGrey, fontWeight: FontWeight.w600),
+            fontSize: 15, color: Colors.blueGrey, fontWeight: FontWeight.w500),
         onChanged: (String newValue) {
           setState(() {
             dropdownValue = newValue;
@@ -275,7 +276,7 @@ class _EmpresaState extends State<Empresa> {
           dropdownValueIcon,
           color: Colors.blueGrey,
         ),
-        iconSize: 26,
+        iconSize: 22,
         elevation: 16,
         onChanged: (IconData newValue) {
           setState(() {
@@ -329,7 +330,7 @@ class _EmpresaState extends State<Empresa> {
                     ),
                     contentPadding: EdgeInsets.only(left: 20),
                     subtitle: Text(
-                        'Ubicacion: Esto es una prueba para ver como se ve este texto en pantalla'),
+                        'Ubicacion: Esto es una prueba para ver como se ve este texto en pantalla', style: TextStyle(fontSize: 10),),
                     title: Padding(
                       padding: const EdgeInsets.only(bottom: 3.0),
                       child: Text(
@@ -337,7 +338,7 @@ class _EmpresaState extends State<Empresa> {
                             .toUpperCase(),
                         style: TextStyle(
                             color: Colors.blueGrey,
-                            fontSize: 16,
+                            fontSize: 13,
                             letterSpacing: 1.8,
                             fontWeight: FontWeight.w700),
                       ),
@@ -358,7 +359,7 @@ class _EmpresaState extends State<Empresa> {
   Widget _listContenidoCuadricular() {
     return GridView.count(
       crossAxisCount: 2,
-      mainAxisSpacing: 30,
+      mainAxisSpacing: 15,
       children: listContent[selectedIndex]
           .map(
             (empresa) => MaterialButton(
@@ -369,70 +370,76 @@ class _EmpresaState extends State<Empresa> {
                     MaterialPageRoute(
                         builder: (context) => OperacionEmpresa()));
               },
-              child: Card(
-                  elevation: 7.0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(right: 12.0, top: 10.0),
-                            child: Icon(
-                              Icons.check_circle,
-                              color: Colors.green.shade600,
-                              size: 25,
+              child: Container(
+                width: 180,
+                height: 180,
+                child: Card(
+                    elevation: 7.0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 12.0, top: 10.0),
+                              child: Icon(
+                                Icons.check_circle,
+                                color: Colors.green.shade600,
+                                size: 20,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.computer,
-                            size: 55,
-                            color: Colors.orange.shade800,
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(
-                                                      child: Padding(
-                              padding: const EdgeInsets.only(left: 8.0, top: 8.0, right: 2.0),
-                              child: Text(
-                                empresa['descripcion'],
-                                style: TextStyle(
-                                  color: Colors.blueGrey,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w600,
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              Icons.computer,
+                              size: 50,
+                              color: Colors.orange.shade800,
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8.0, top: 8.0, right: 8.0),
+                                child: Text(
+                                  empresa['descripcion'],
+                                  style: TextStyle(
+                                    color: Colors.blueGrey,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(left:8.0, top: 5.0),
-                              child: Text(
-                                'Ubicacion: Esto es una prueba para ver como se ve este texto en pantalla',
-                                style: TextStyle(color: Colors.grey.shade600),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 8.0, top: 5.0),
+                                child: Text(
+                                  'Ubicacion: Esto es una prueba para ver como se ve este texto en pantalla',
+                                  style: TextStyle(color: Colors.grey.shade600, fontSize: 10),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      )
-                    ],
-                  )),
+                          ],
+                        )
+                      ],
+                    )),
+              ),
             ),
           )
           .toList(),
