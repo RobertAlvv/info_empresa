@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../empresa/empresa.dart';
 import '../dashboard.dart';
 
 int _taglogo;
@@ -54,7 +52,7 @@ Widget menuDrawerItem(BuildContext context, Map item) {
   return ListTile(
     //leading: getIcon(stringIcon),
     title: Text(item['title'],
-        style: GoogleFonts.firaSans(
+        style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
         )),

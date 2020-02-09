@@ -95,7 +95,7 @@ class MyDashboard extends StatelessWidget {
           title: Row(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 45.0),
+                padding: const EdgeInsets.only(left: 40.0),
                 child: Image.asset(
                   'img/bits.PNG',
                   height: 55,
@@ -108,7 +108,7 @@ class MyDashboard extends StatelessWidget {
                   'ENTIDADES',
                   style: TextStyle(
                       color: Colors.blueGrey,
-                      fontSize: 21,
+                      fontSize: 18,
                       fontWeight: FontWeight.w900,
                       letterSpacing: 0.9),
                 ),
@@ -160,13 +160,16 @@ class MyDashboard extends StatelessWidget {
                             ),
                             Expanded(
                               child: Center(
-                                child: Text(
-                                  empresa['subtitle'],
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 0.6,
-                                      color: Colors.blueGrey),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom:10.0),
+                                  child: Text(
+                                    empresa['subtitle'],
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        letterSpacing: 0.6,
+                                        color: Colors.blueGrey),
+                                  ),
                                 ),
                               ),
                             ),

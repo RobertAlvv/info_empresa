@@ -37,7 +37,7 @@ final _itemImage = [
 ];
 
 String imgRecurso = '';
-String cabRecurso = '';
+Map<String, String> cabRecurso;
 
 class OperacionEmpresa extends StatelessWidget {
   @override
@@ -120,8 +120,7 @@ class OperacionEmpresa extends StatelessWidget {
                     .map(
                       (item) => MaterialButton(
                         onPressed: () {
-                          cabRecurso = item['cabecera'];
-                          print(item);
+                          cabRecurso = item;
                           imgRecurso = item['img'];
                           Navigator.push(
                               context,

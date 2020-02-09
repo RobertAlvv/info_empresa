@@ -201,7 +201,7 @@ class _EmpresaState extends State<Empresa> {
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.9,
                 ),
-              ),
+             ),
             ),
           );
         });
