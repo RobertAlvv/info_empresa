@@ -5,30 +5,35 @@ import '../recurso/info_pc.dart';
 
 final _itemImage = [
   {
+    'posicion': '0',
     'cabecera': 'Configuracion PC',
     'img': 'img/Computer.png',
     'info': 'Windows 10',
     'detalle': 'Optiplex 780 SFF'
   },
   {
+    'posicion': '1',
     'cabecera': 'AnyDesk',
     'img': 'img/AnyDesk.png',
     'info': 'Registrado',
-    'detalle': 'Id 985 339 887',
+    'detalle': '985 339 887',
   },
   {
+    'posicion': '2',
     'cabecera': 'Remote Desktop',
     'img': 'img/remoteDesktop.png',
     'info': 'Sin Registrar',
     'detalle': ''
   },
   {
+    'posicion': '3',
     'cabecera': 'Configuracion de Red',
     'img': 'img/ethernet.png',
     'info': 'Ip 10.0.0.5',
     'detalle': ''
   },
   {
+    'posicion': '4',
     'cabecera': 'TeamViewer',
     'img': 'img/teamViewer.png',
     'info': 'Registrado',
@@ -38,6 +43,7 @@ final _itemImage = [
 
 String imgRecurso = '';
 Map<String, String> cabRecurso;
+int index;
 
 class OperacionEmpresa extends StatelessWidget {
   @override
@@ -120,6 +126,7 @@ class OperacionEmpresa extends StatelessWidget {
                     .map(
                       (item) => MaterialButton(
                         onPressed: () {
+                          index = int.parse(item['posicion']);
                           cabRecurso = item;
                           imgRecurso = item['img'];
                           Navigator.push(

@@ -9,7 +9,27 @@ final tableDAta = [
     {'text': 'Procesador', 'valor': 'i5 8va Gen, 2.20 ghz'},
     {'text': 'Memoria RAM', 'valor': '16 GB RAM DDR4 2100 Mhz'},
     {'text': 'Disco Duro', 'valor': '500 GB Disco Duro, 7200 RPM'},
-  }
+  },
+  {
+    {'text': 'ID', 'valor': '985 339 887'},
+    {'text': 'Contraseña', 'valor': 'BITS.b1ts'},
+    {'text': 'Presencial', 'valor': 'SI'},
+  },
+  {
+    {'text': 'Conexion', 'valor': ' Sin registrar'},
+    {'text': 'Usuario', 'valor': '-'},
+    {'text': 'Password', 'valor': '-'}
+  },
+  {
+    {'text': 'IP', 'valor': '10.0.0.5'},
+    {'text': 'Mascara de Subred', 'valor': '255.255.255.0'},
+    {'text': 'Puerta de enlace', 'valor': '10.0.0.1'}
+  },
+  {
+   {'text': 'ID', 'valor': '1 203 699 888'},
+   {'text': 'Contraseña', 'valor': 'BITS.b1ts'},
+   {'text': 'Presencial', 'valor': 'SI'} ,
+  },
 ];
 
 class InfoPC extends StatelessWidget {
@@ -44,7 +64,7 @@ class InfoPC extends StatelessWidget {
             title: Text(
               activo,
               style: TextStyle(
-                  color: Colors.blueGrey,
+                  color: Colors.orange.shade800,
                   fontSize: 18,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 0.5),
@@ -73,35 +93,47 @@ class InfoPC extends StatelessWidget {
                     indent: 100,
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                    padding: EdgeInsets.only(left: 25, top: 20, bottom: 35),
                     child: Text(
                       cabRecurso['cabecera'],
                       style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.orange.shade800),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 35),
                     child: Row(
                       children: <Widget>[
-                        Text('Informacion'),
+                        Text('Informacion', style: TextStyle(fontWeight: FontWeight.w500),),
                       ],
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 15.0, left: 10.0, right: 10.0, bottom: 50.0),
+                        top: 10.0, left: 10.0, right: 10.0, bottom: 40.0),
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
                       elevation: 5.0,
                       child: ListTile(
-                        contentPadding: EdgeInsets.all(25),
-                        title: Text(cabRecurso['info']),
+                        contentPadding: EdgeInsets.all(15),
+                        //title: Text(cabRecurso['info']),
                         subtitle: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: tableDAta[0]
-                              .map((valor) => Text(valor['valor']))
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: tableDAta[index]
+                              .map((valor) => Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(Icons.remove_circle, color: Colors.orange.shade800,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left:8.0),
+                                      child: Text(valor['valor'], style: TextStyle(fontWeight: FontWeight.w700),),
+                                    ),
+                                  ],
+                                ),
+                              ))
                               .toList(),
                         ),
                       ),
@@ -109,21 +141,21 @@ class InfoPC extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 35, bottom: 10),
-                    child: Text('Datos'),
+                    child: Text('Datos', style: TextStyle(fontWeight: FontWeight.w500)),
                   ),
                   Expanded(
                     child: ListView(
-                      padding: EdgeInsets.only(top: 5, bottom: 80.0),
+                      padding: EdgeInsets.only(bottom: 80.0),
                       scrollDirection: Axis.vertical,
-                      children: tableDAta[0]
+                      children: tableDAta[index]
                           .map(
                             (datos) => Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.only(left:16.0, right: 16.0, bottom: 35.0),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
+                                      BorderRadius.all(Radius.circular(15)),
                                 ),
                                 child: TextField(
                                   onTap: () {},
@@ -131,7 +163,7 @@ class InfoPC extends StatelessWidget {
                                     labelText: datos['text'],
                                     border: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(20)),
+                                            BorderRadius.circular(15)),
                                     contentPadding: EdgeInsets.all(10),
                                   ),
                                 ),
@@ -151,14 +183,14 @@ class InfoPC extends StatelessWidget {
                     RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
-                      elevation: 15,
+                      elevation: 8,
                       onPressed: () {},
-                      color: Colors.orange.shade800,
+                      color: Colors.blueGrey,
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
                           'Guardar',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),
@@ -168,14 +200,14 @@ class InfoPC extends StatelessWidget {
                     RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
-                      elevation: 15,
+                      elevation: 8,
                       onPressed: () {},
-                      color: Colors.orange.shade800,
+                      color: Colors.blueGrey,
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
                           'Cancelar',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),
