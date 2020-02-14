@@ -79,15 +79,15 @@ class _EmpresaState extends State<Empresa> {
               Navigator.pop(context);
             },
           ),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 12.0),
-              child: Icon(
-                Icons.more_vert,
-                color: Colors.blueGrey,
-              ),
-            ),
-          ],
+          // actions: <Widget>[
+          //   Padding(
+          //     padding: const EdgeInsets.only(right: 12.0),
+          //     child: Icon(
+          //       Icons.more_vert,
+          //       color: Colors.blueGrey,
+          //     ),
+          //   ),
+          // ],
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -201,7 +201,7 @@ class _EmpresaState extends State<Empresa> {
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.9,
                 ),
-             ),
+              ),
             ),
           );
         });
@@ -328,23 +328,22 @@ class _EmpresaState extends State<Empresa> {
                       color: Colors.orange.shade800,
                       size: 45,
                     ),
-                    contentPadding: EdgeInsets.only(left: 20),
+                    contentPadding: EdgeInsets.only(left: 10),
                     subtitle: Text(
-                        'Ubicacion: Esto es una prueba para ver como se ve este texto en pantalla', style: TextStyle(fontSize: 10),),
-                    title: Padding(
-                      padding: const EdgeInsets.only(bottom: 3.0),
-                      child: Text(
-                        listContent[selectedIndex][index]['descripcion']
-                            .toUpperCase(),
-                        style: TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 13,
-                            letterSpacing: 1.8,
-                            fontWeight: FontWeight.w700),
-                      ),
+                      'Ubicacion: Esto es una prueba para ver como se ve este texto en pantalla',
+                      style: TextStyle(fontSize: 10),
+                    ),
+                    title: Text(
+                      listContent[selectedIndex][index]['descripcion']
+                          .toUpperCase(),
+                      style: TextStyle(
+                          color: Colors.blueGrey,
+                          fontSize: 13,
+                          letterSpacing: 1.8,
+                          fontWeight: FontWeight.w700),
                     ),
                     trailing: Padding(
-                      padding: const EdgeInsets.only(right: 40.0),
+                      padding: const EdgeInsets.only(right: 30.0),
                       child: Icon(Icons.check_circle,
                           color: Colors.green.shade600, size: 30),
                     ),
@@ -359,7 +358,8 @@ class _EmpresaState extends State<Empresa> {
   Widget _listContenidoCuadricular() {
     return GridView.count(
       crossAxisCount: 2,
-      mainAxisSpacing: 15,
+      mainAxisSpacing: 0,
+      crossAxisSpacing: 0,
       children: listContent[selectedIndex]
           .map(
             (empresa) => MaterialButton(
@@ -385,7 +385,7 @@ class _EmpresaState extends State<Empresa> {
                           children: <Widget>[
                             Padding(
                               padding:
-                                  const EdgeInsets.only(right: 12.0, top: 10.0),
+                                  const EdgeInsets.only(right: 15.0, top: 3),
                               child: Icon(
                                 Icons.check_circle,
                                 color: Colors.green.shade600,
@@ -405,18 +405,19 @@ class _EmpresaState extends State<Empresa> {
                           ],
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 8.0, top: 8.0, right: 8.0),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8.0, right: 8.0),
+                              child: Center(
                                 child: Text(
                                   empresa['descripcion'],
                                   style: TextStyle(
                                     color: Colors.blueGrey,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
+                                  
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w800,
                                   ),
                                 ),
                               ),
@@ -431,7 +432,9 @@ class _EmpresaState extends State<Empresa> {
                                     const EdgeInsets.only(left: 8.0, top: 5.0),
                                 child: Text(
                                   'Ubicacion: Esto es una prueba para ver como se ve este texto en pantalla',
-                                  style: TextStyle(color: Colors.grey.shade600, fontSize: 10),
+                                  style: TextStyle(
+                                      color: Colors.grey.shade600,
+                                      fontSize: 10),
                                 ),
                               ),
                             ),

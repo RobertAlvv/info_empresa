@@ -115,12 +115,12 @@ class MyDashboard extends StatelessWidget {
               )
             ],
           ),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: Icon(Icons.search),
-            )
-          ],
+          // actions: <Widget>[
+          //   Padding(
+          //     padding: const EdgeInsets.only(right: 10.0),
+          //     child: Icon(Icons.search),
+          //   )
+          // ],
         ),
         drawer: Drawer(
           elevation: 1,

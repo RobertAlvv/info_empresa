@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../operacionesEmpresas/modificar_Eliminar_Activos.dart';
 import '../empresa/empresa.dart';
@@ -26,9 +27,9 @@ final tableDAta = [
     {'text': 'Puerta de enlace', 'valor': '10.0.0.1'}
   },
   {
-   {'text': 'ID', 'valor': '1 203 699 888'},
-   {'text': 'Contraseña', 'valor': 'BITS.b1ts'},
-   {'text': 'Presencial', 'valor': 'SI'} ,
+    {'text': 'ID', 'valor': '1 203 699 888'},
+    {'text': 'Contraseña', 'valor': 'BITS.b1ts'},
+    {'text': 'Presencial', 'valor': 'SI'},
   },
 ];
 
@@ -37,6 +38,7 @@ class InfoPC extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _size = MediaQuery.of(context);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -55,6 +57,7 @@ class InfoPC extends StatelessWidget {
       ),
       child: Scaffold(
           backgroundColor: Colors.transparent,
+          resizeToAvoidBottomPadding: true,
           appBar: AppBar(
             leading: IconButton(
                 icon: Icon(Icons.arrow_back_ios),
@@ -84,8 +87,8 @@ class InfoPC extends StatelessWidget {
           ),
           body: Stack(
             children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              ListView(
+                //crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Divider(
                     thickness: 1.5,
@@ -93,24 +96,30 @@ class InfoPC extends StatelessWidget {
                     indent: 100,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25, top: 20, bottom: 35),
+                    padding: EdgeInsets.only(left: 25, top: 15, bottom: 25),
                     child: Text(
                       cabRecurso['cabecera'],
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.orange.shade800),
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.orange.shade800),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 35),
                     child: Row(
                       children: <Widget>[
-                        Text('Informacion', style: TextStyle(fontWeight: FontWeight.w500),),
+                        Text(
+                          'Informacion',
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.w500),
+                        ),
                       ],
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 10.0, left: 10.0, right: 10.0, bottom: 40.0),
+                        top: 10.0, left: 10.0, right: 10.0, bottom: 20.0),
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0)),
@@ -123,17 +132,25 @@ class InfoPC extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: tableDAta[index]
                               .map((valor) => Padding(
-                                padding: const EdgeInsets.only(top:8.0),
-                                child: Row(
-                                  children: <Widget>[
-                                    Icon(Icons.remove_circle, color: Colors.orange.shade800,),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left:8.0),
-                                      child: Text(valor['valor'], style: TextStyle(fontWeight: FontWeight.w700),),
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.remove_circle,
+                                          color: Colors.orange.shade800,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            valor['valor'],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ))
+                                  ))
                               .toList(),
                         ),
                       ),
@@ -141,79 +158,95 @@ class InfoPC extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 35, bottom: 10),
-                    child: Text('Datos', style: TextStyle(fontWeight: FontWeight.w500)),
+                    child: Text('Datos',
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.w500)),
                   ),
-                  Expanded(
-                    child: ListView(
-                      padding: EdgeInsets.only(bottom: 80.0),
-                      scrollDirection: Axis.vertical,
-                      children: tableDAta[index]
-                          .map(
-                            (datos) => Padding(
-                              padding: const EdgeInsets.only(left:16.0, right: 16.0, bottom: 35.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15)),
-                                ),
-                                child: TextField(
-                                  onTap: () {},
-                                  decoration: InputDecoration(
-                                    labelText: datos['text'],
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    contentPadding: EdgeInsets.all(10),
-                                  ),
+                  Column(
+                    // itemExtent: 70,
+                    // padding: EdgeInsets.only(bottom: 80.0),
+                    // scrollDirection: Axis.vertical,
+                    children: tableDAta[index]
+                        .map(
+                          (datos) => Padding(
+                            padding: const EdgeInsets.only(
+                                left: 16.0, right: 16.0, bottom: 30.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                boxShadow: <BoxShadow>[
+                                  BoxShadow(
+                                    offset: Offset(2, 10),
+                                    color: Colors.black26,
+                                    blurRadius: 8,
+                                    spreadRadius: 1,
+                                  )
+                                ],
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15)),
+                              ),
+                              child: TextField(
+                                onTap: () {},
+                                decoration: InputDecoration(
+                                  labelText: datos['text'],
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  contentPadding: EdgeInsets.all(10),
                                 ),
                               ),
                             ),
-                          )
-                          .toList(),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom:20),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,      
+                      children: <Widget>[
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          elevation: 8,
+                          onPressed: () {},
+                          color: Colors.blueGrey,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              'Guardar',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          elevation: 8,
+                          onPressed: () {},
+                          color: Colors.blueGrey,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              'Cancelar',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-              Positioned(
-                bottom: 30,
-                left: 70,
-                child: Row(
-                  children: <Widget>[
-                    RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      elevation: 8,
-                      onPressed: () {},
-                      color: Colors.blueGrey,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Text(
-                          'Guardar',
-                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      elevation: 8,
-                      onPressed: () {},
-                      color: Colors.blueGrey,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Text(
-                          'Cancelar',
-                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
             ],
           )),
     );

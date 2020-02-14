@@ -29,7 +29,7 @@ final _itemImage = [
     'posicion': '3',
     'cabecera': 'Configuracion de Red',
     'img': 'img/ethernet.png',
-    'info': 'Ip 10.0.0.5',
+    'info': 'Configuracion de Red',
     'detalle': ''
   },
   {
@@ -155,17 +155,19 @@ class OperacionEmpresa extends StatelessWidget {
                                   ),
                                   Row(
                                     children: <Widget>[
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 11.0),
-                                        child: Text(
-                                          item['info'],
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w800,
-                                            color: Colors.blueGrey,
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 11.0, right: 11),
+                                          child: Text(
+                                            item['info'],
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w800,
+                                              color: Colors.blueGrey,
+                                            ),
+                                            textAlign: TextAlign.start,
                                           ),
-                                          textAlign: TextAlign.start,
                                         ),
                                       ),
                                     ],
@@ -173,8 +175,8 @@ class OperacionEmpresa extends StatelessWidget {
                                   Row(
                                     children: <Widget>[
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 11.0),
+                                        padding: const EdgeInsets.only(
+                                            left: 11.0, bottom: 14),
                                         child: Text(
                                           item['detalle'],
                                           style: TextStyle(
@@ -186,9 +188,6 @@ class OperacionEmpresa extends StatelessWidget {
                                         ),
                                       ),
                                     ],
-                                  ),
-                                  SizedBox(
-                                    height: 14,
                                   ),
                                 ],
                               ),
