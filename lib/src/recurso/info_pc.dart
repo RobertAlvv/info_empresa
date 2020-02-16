@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../recursosActivos/recursos_activos.dart';
 import '../empresa/empresa.dart';
 
-final tableDAta = [
+final _tableData = [
   {
     {'text': 'Sistema Operativo', 'valor': 'Windows 10'},
     {'text': 'Marca', 'valor': 'Optiplex 780 SFF'},
@@ -131,7 +131,7 @@ class InfoPC extends StatelessWidget {
                         subtitle: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: tableDAta[index]
+                          children: _tableData[index]
                               .map((valor) => Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: Row(
@@ -164,7 +164,7 @@ class InfoPC extends StatelessWidget {
                             fontSize: 17, fontWeight: FontWeight.w500)),
                   ),
                   Column(
-                    children: tableDAta[index]
+                    children: _tableData[index]
                         .map(
                           (datos) => Padding(
                             padding: const EdgeInsets.only(
