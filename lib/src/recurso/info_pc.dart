@@ -75,9 +75,12 @@ class InfoPC extends StatelessWidget {
             actions: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 8.0),
-                child: Image.asset(
-                  imgRecurso,
-                  fit: BoxFit.contain,
+                child: Hero(
+                  tag: tagIcon,
+                  child: Image.asset(
+                    imgRecurso,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               )
             ],
@@ -88,7 +91,6 @@ class InfoPC extends StatelessWidget {
           body: Stack(
             children: <Widget>[
               ListView(
-                //crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Divider(
                     thickness: 1.5,
@@ -126,7 +128,6 @@ class InfoPC extends StatelessWidget {
                       elevation: 5.0,
                       child: ListTile(
                         contentPadding: EdgeInsets.all(15),
-                        //title: Text(cabRecurso['info']),
                         subtitle: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,9 +164,6 @@ class InfoPC extends StatelessWidget {
                             fontSize: 17, fontWeight: FontWeight.w500)),
                   ),
                   Column(
-                    // itemExtent: 70,
-                    // padding: EdgeInsets.only(bottom: 80.0),
-                    // scrollDirection: Axis.vertical,
                     children: tableDAta[index]
                         .map(
                           (datos) => Padding(
@@ -200,10 +198,10 @@ class InfoPC extends StatelessWidget {
                         .toList(),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom:20),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,      
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         RaisedButton(
                           shape: RoundedRectangleBorder(

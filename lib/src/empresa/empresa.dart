@@ -3,6 +3,9 @@ import '../../utils/icon_utils.dart';
 import 'widgets_empresa/search_delegate.dart';
 import '../recursosActivos/recursos_activos.dart';
 import '../recursosActivos/agregar_activos.dart';
+import '../recurso/info_modem.dart';
+import '../recurso/info_printer.dart';
+import '../recurso/info_router.dart';
 import '../dashboard/dashboard.dart';
 
 String activo;
@@ -59,12 +62,12 @@ class _EmpresaState extends State<Empresa> {
   ];
 
   final List categoriaEmpresa = [
-    {'Nombre': 'Cajas', 'icono': 'computadora'},
-    {'Nombre': 'Servidores', 'icono': 'servidor'},
-    {'Nombre': 'Backups', 'icono': 'computadora'},
-    {'Nombre': 'Modem', 'icono': 'routes'},
-    {'Nombre': 'Routers', 'icono': 'routes'},
-    {'Nombre': 'Impresoras', 'icono': 'impresora'},
+    {'Nombre': 'Cajas', 'icono': 'computadora', 'RutaRecurso': OperacionEmpresa()},
+    {'Nombre': 'Servidores', 'icono': 'servidor', 'RutaRecurso': OperacionEmpresa()},
+    {'Nombre': 'Backups', 'icono': 'computadora', 'RutaRecurso': OperacionEmpresa()},
+    {'Nombre': 'Modem', 'icono': 'routes', 'RutaRecurso': InfoModem()},
+    {'Nombre': 'Routers', 'icono': 'routes', 'RutaRecurso': InfoRouter()},
+    {'Nombre': 'Impresoras', 'icono': 'impresora', 'RutaRecurso': InfoPrinter()},
   ];
 
   @override
@@ -330,11 +333,10 @@ class _EmpresaState extends State<Empresa> {
                   child: ListTile(
                     onTap: () {
                       activo = listContent[selectedIndex][index]['descripcion'];
-                      print(categoriaEmpresa[selectedIndex]['icono']);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => OperacionEmpresa()));
+                              builder: (context) => categoriaEmpresa[selectedIndex]['RutaRecurso']));
                     },
                     leading: getIcon(categoriaEmpresa[selectedIndex]['icono']),
                     contentPadding: EdgeInsets.only(left: 10),
@@ -380,7 +382,7 @@ class _EmpresaState extends State<Empresa> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => OperacionEmpresa()));
+                        builder: (context) => categoriaEmpresa[selectedIndex]['RutaRecurso']));
               },
               child: Container(
                 width: 180,

@@ -5,6 +5,7 @@ import '../recurso/info_pc.dart';
 
 final _itemImage = [
   {
+    'tag':'icon0',
     'posicion': '0',
     'cabecera': 'Configuracion PC',
     'img': 'img/Computer.png',
@@ -12,6 +13,7 @@ final _itemImage = [
     'detalle': 'Optiplex 780 SFF'
   },
   {
+    'tag':'icon1',
     'posicion': '1',
     'cabecera': 'AnyDesk',
     'img': 'img/AnyDesk.png',
@@ -19,6 +21,7 @@ final _itemImage = [
     'detalle': '985 339 887',
   },
   {
+    'tag':'icon2',
     'posicion': '2',
     'cabecera': 'Remote Desktop',
     'img': 'img/remoteDesktop.png',
@@ -26,6 +29,7 @@ final _itemImage = [
     'detalle': ''
   },
   {
+    'tag':'icon3',
     'posicion': '3',
     'cabecera': 'Configuracion de Red',
     'img': 'img/ethernet.png',
@@ -33,6 +37,7 @@ final _itemImage = [
     'detalle': ''
   },
   {
+    'tag':'icon4',
     'posicion': '4',
     'cabecera': 'TeamViewer',
     'img': 'img/teamViewer.png',
@@ -40,7 +45,7 @@ final _itemImage = [
     'detalle': '1 203 699 888'
   }
 ];
-
+String tagIcon;
 String imgRecurso = '';
 Map<String, String> cabRecurso;
 int index;
@@ -83,9 +88,12 @@ class OperacionEmpresa extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 8.0, right: 12.0),
                 child: Container(
                   height: 100,
-                  child: Image.asset(
-                    logo,
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: tag,
+                    child: Image.asset(
+                      logo,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               )
@@ -126,6 +134,7 @@ class OperacionEmpresa extends StatelessWidget {
                     .map(
                       (item) => MaterialButton(
                         onPressed: () {
+                          tagIcon = item['tag'];
                           index = int.parse(item['posicion']);
                           cabRecurso = item;
                           imgRecurso = item['img'];
@@ -147,9 +156,12 @@ class OperacionEmpresa extends StatelessWidget {
                                   Expanded(
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Image.asset(
-                                        item['img'],
-                                        fit: BoxFit.cover,
+                                      child: Hero(
+                                        tag: item['tag'],
+                                        child: Image.asset(
+                                          item['img'],
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),
