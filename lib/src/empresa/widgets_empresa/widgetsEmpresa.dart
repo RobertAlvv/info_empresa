@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../operacionesEmpresas/addActivos.dart';
 
 enum _listver { Detalle, IconosMedianos }
 enum _listorden { PorNombre, Secuencia }

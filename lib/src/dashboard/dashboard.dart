@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'providers/providers.dart';
+import 'drawer.dart';
 import '../empresa/empresa.dart';
 
 final listMenuEmpresas = [
@@ -115,15 +115,9 @@ class MyDashboard extends StatelessWidget {
               )
             ],
           ),
-          // actions: <Widget>[
-          //   Padding(
-          //     padding: const EdgeInsets.only(right: 10.0),
-          //     child: Icon(Icons.search),
-          //   )
-          // ],
         ),
         drawer: Drawer(
-          elevation: 1,
+          elevation: 25,
           child: ListView(
             children: menuDrawer(context),
           ),

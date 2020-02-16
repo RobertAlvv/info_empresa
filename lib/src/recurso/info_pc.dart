@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../operacionesEmpresas/modificar_Eliminar_Activos.dart';
+import '../recursosActivos/recursos_activos.dart';
 import '../empresa/empresa.dart';
 
 final tableDAta = [

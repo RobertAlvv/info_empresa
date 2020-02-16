@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets_empresa/search_delegate.dart';
-import '../operacionesEmpresas/modificar_Eliminar_Activos.dart';
+import '../recursosActivos/recursos_activos.dart';
 import '../dashboard/dashboard.dart';
 
 String activo;
@@ -79,43 +79,54 @@ class _EmpresaState extends State<Empresa> {
               Navigator.pop(context);
             },
           ),
-          // actions: <Widget>[
-          //   Padding(
-          //     padding: const EdgeInsets.only(right: 12.0),
-          //     child: Icon(
-          //       Icons.more_vert,
-          //       color: Colors.blueGrey,
-          //     ),
-          //   ),
-          // ],
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
-                ),
-                color: Colors.white,
-              ),
-              child: Column(
+            Stack(
+                overflow: Overflow.visible,
+                alignment: Alignment.bottomCenter,
                 children: <Widget>[
                   Container(
-                    height: 65,
-                    width: 160,
-                    child: _imageEmpresa(),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(30),
+                        bottomRight: Radius.circular(30),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          height: 65,
+                          width: 160,
+                          child: _imageEmpresa(),
+                        ),
+                        _cajaTextoBusqueda(),
+                        Container(
+                            width: _size.width * 0.98,
+                            height: _size.height * 0.07,
+                            color: Colors.transparent,
+                            child: _headermenu(context)),
+                      ],
+                    ),
                   ),
-                  _cajaTextoBusqueda(),
-                  Container(
-                      width: _size.width * 0.98,
-                      height: _size.height * 0.06,
-                      color: Colors.transparent,
-                      child: _headermenu(context)),
-                ],
-              ),
-            ),
+                  Positioned(
+                    bottom: -30,
+                    child: Transform.scale(
+                      scale: 0.75,
+                      child: FloatingActionButton(
+                        backgroundColor: Colors.orange.shade800,
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.blueGrey.shade300,
+                          size: 35,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                ]),
             _rowTextOrder(context),
             Container(
               child: Expanded(
@@ -219,23 +230,7 @@ class _EmpresaState extends State<Empresa> {
             ],
           ),
           Row(
-            children: <Widget>[
-              _comboFiltroVista(),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: IconButton(
-                  onPressed: () {
-                    // Navigator.push(
-                    //         context, MaterialPageRoute(builder: (context) => AddActivos()));
-                  },
-                  icon: Icon(
-                    Icons.add_circle_outline,
-                    color: Colors.blueGrey,
-                  ),
-                  iconSize: 26,
-                ),
-              )
-            ],
+            children: <Widget>[_comboFiltroVista()],
           ),
         ],
       ),
@@ -251,7 +246,7 @@ class _EmpresaState extends State<Empresa> {
         iconSize: 26,
         elevation: 16,
         style: TextStyle(
-            fontSize: 15, color: Colors.blueGrey, fontWeight: FontWeight.w500),
+            fontSize: 13, color: Colors.blueGrey, fontWeight: FontWeight.w800),
         onChanged: (String newValue) {
           setState(() {
             dropdownValue = newValue;
@@ -270,7 +265,7 @@ class _EmpresaState extends State<Empresa> {
 
   Widget _comboFiltroVista() {
     return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
+      padding: const EdgeInsets.only(right: 40.0),
       child: DropdownButton<IconData>(
         icon: Icon(
           dropdownValueIcon,
@@ -305,9 +300,6 @@ class _EmpresaState extends State<Empresa> {
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: <Widget>[
-              SizedBox(
-                height: 8.0,
-              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
@@ -349,6 +341,9 @@ class _EmpresaState extends State<Empresa> {
                     ),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 8.0,
               ),
             ],
           );
@@ -408,14 +403,13 @@ class _EmpresaState extends State<Empresa> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 8.0, right: 8.0),
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
                               child: Center(
                                 child: Text(
                                   empresa['descripcion'],
                                   style: TextStyle(
                                     color: Colors.blueGrey,
-                                  
                                     fontSize: 14,
                                     fontWeight: FontWeight.w800,
                                   ),
