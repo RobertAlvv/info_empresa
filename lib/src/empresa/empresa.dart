@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../utils/icon_utils.dart';
 import 'widgets_empresa/search_delegate.dart';
 import '../recursosActivos/recursos_activos.dart';
+import '../recursosActivos/agregar_activos.dart';
 import '../dashboard/dashboard.dart';
 
 String activo;
@@ -42,6 +44,9 @@ class _EmpresaState extends State<Empresa> {
       {'idbackup': '2', 'descripcion': 'Backup 3'},
     ],
     [
+      {'idmodem': '0', 'descripcion': 'Modem Claro'},
+    ],
+    [
       {'idrouter': '0', 'descripcion': 'Router Primer Nivel'},
       {'idrouter': '1', 'descripcion': 'Router Segundo Nivel'},
       {'idrouter': '2', 'descripcion': 'Router Tercer Nivel'},
@@ -54,11 +59,12 @@ class _EmpresaState extends State<Empresa> {
   ];
 
   final List categoriaEmpresa = [
-    {'Nombre': 'Cajas', 'list': ''},
-    {'Nombre': 'Servidores', 'list': ''},
-    {'Nombre': 'Backups', 'list': ''},
-    {'Nombre': 'Routers', 'list': ''},
-    {'Nombre': 'Impresoras', 'list': ''},
+    {'Nombre': 'Cajas', 'icono': 'computadora'},
+    {'Nombre': 'Servidores', 'icono': 'servidor'},
+    {'Nombre': 'Backups', 'icono': 'computadora'},
+    {'Nombre': 'Modem', 'icono': 'routes'},
+    {'Nombre': 'Routers', 'icono': 'routes'},
+    {'Nombre': 'Impresoras', 'icono': 'impresora'},
   ];
 
   @override
@@ -89,6 +95,14 @@ class _EmpresaState extends State<Empresa> {
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          offset: Offset(2, 10),
+                          color: Colors.black26,
+                          blurRadius: 10,
+                          spreadRadius: 1,
+                        )
+                      ],
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30),
@@ -112,17 +126,23 @@ class _EmpresaState extends State<Empresa> {
                     ),
                   ),
                   Positioned(
-                    bottom: -30,
+                    bottom: -25,
                     child: Transform.scale(
-                      scale: 0.75,
+                      scale: 0.85,
                       child: FloatingActionButton(
+                        elevation: 15,
                         backgroundColor: Colors.orange.shade800,
                         child: Icon(
                           Icons.add,
-                          color: Colors.blueGrey.shade300,
+                          color: Colors.blueGrey.shade100,
                           size: 35,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AgregarActivos()));
+                        },
                       ),
                     ),
                   ),
@@ -310,16 +330,13 @@ class _EmpresaState extends State<Empresa> {
                   child: ListTile(
                     onTap: () {
                       activo = listContent[selectedIndex][index]['descripcion'];
+                      print(categoriaEmpresa[selectedIndex]['icono']);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => OperacionEmpresa()));
                     },
-                    leading: Icon(
-                      Icons.computer,
-                      color: Colors.orange.shade800,
-                      size: 45,
-                    ),
+                    leading: getIcon(categoriaEmpresa[selectedIndex]['icono']),
                     contentPadding: EdgeInsets.only(left: 10),
                     subtitle: Text(
                       'Ubicacion: Esto es una prueba para ver como se ve este texto en pantalla',
@@ -392,11 +409,7 @@ class _EmpresaState extends State<Empresa> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(
-                              Icons.computer,
-                              size: 50,
-                              color: Colors.orange.shade800,
-                            )
+                            getIcon(categoriaEmpresa[selectedIndex]['icono']),
                           ],
                         ),
                         Row(
